@@ -1,9 +1,8 @@
 # standard library imports
 import os
+import sys
 
-# local library imports
-
-# external library imports
+# 3rd party library imports
 from selenium import webdriver
 import configparser
 
@@ -12,22 +11,20 @@ config_parser = configparser.RawConfigParser()
 config_file_path = os.path.join(os.path.dirname(__file__), "..", "data", "config.ini")
 config_parser.read_file(open(config_file_path))
 
-# HARDCODED ENVIRONMENT VALUES
-web_driver = 'FIREFOX'
-environment = 'DEV'
-
 
 class EnvironmentData:
+
+    # arguments for environment and web_driver
+    environment = str(sys.argv[1])
+    web_driver = str(sys.argv[2])
 
     # WEB DRIVER
     if web_driver == 'FIREFOX':
         driver = webdriver.Firefox()
     elif web_driver == 'CHROME':
-        directory = os.path.split(os.path.abspath(os.path.dirname(__file__)))[0]
-        chrome_driver_path = directory + "\\resources\\drivers\\chromedriver.exe"
-        driver = webdriver.Chrome(chrome_driver_path)
+        driver = webdriver.Chrome()
     else:
-        raise NameError('Wrong driver value. ')
+        raise NameError('Wrong driver value.')
 
     if environment == "DEV":
         # WEB APP
