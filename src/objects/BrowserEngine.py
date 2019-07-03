@@ -20,6 +20,3 @@ class BrowserEngine:
     @classmethod
     def close_browser(cls):
         cls.driver.quit()
-
-
-BrowserEngine.open_url(Env.app_url)
