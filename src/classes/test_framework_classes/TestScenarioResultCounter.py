@@ -5,6 +5,7 @@ from data.TestFrameworkEnvironmentData import TestFrameworkEnvironmentData as En
 
 
 class TestScenarioResultCounter:
+    """
     This class increments overall result and overall tested Test Cases for every rule sent to this function
     """
 
