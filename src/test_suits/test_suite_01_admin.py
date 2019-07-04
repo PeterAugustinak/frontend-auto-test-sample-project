@@ -1,4 +1,4 @@
-# this is app_user_management test suite for visma-frontend-test project
+# this is app_user_management test suite for frontend-auto-test-sample-project project
 
 # test scenario imports
 from test_suits.test_scenarios_for_test_suite_01.ts_01_user_search import TestScenario as ts_01_user_search
