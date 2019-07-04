@@ -13,9 +13,7 @@ from data.TestFrameworkEnvironmentData import TestFrameworkEnvironmentData as Te
 from classes.test_framework_classes.TestServiceAvailability import TestServicesAvailability as TestService
 from classes.test_framework_classes.TestSuiteInitialSetup import TestSuiteInitialSetup as Tsis
 
-
-project_name = 'VISMA-FRONTEND-TEST'
-
+# test suite
 
 class TestSuiteRunner:
     """
@@ -50,7 +48,7 @@ class TestSuiteRunner:
         """
 
         # introductory screen
-        print(colored(f"TESTING FOR {project_name} - {Tenv.test_suite_name} HAS BEEN STARTED"
+        print(colored(f"TESTING FOR {Env.project_name} HAS BEEN STARTED"
                       f" AT {datetime.now().strftime('%d-%m-%Y, %H:%M:%S')}!", attrs=[Tenv.stlbold]))
         print("Environment: " + colored(Env.environment, attrs=[Tenv.stlbold]))
         print(colored("All below Test Scenarios with all details can be find here:", Tenv.stlts))
@@ -62,7 +60,7 @@ class TestSuiteRunner:
         Tsis.test_suite_initial_setup()
 
         # closing screen
-        print(colored(f"TESTING FOR {project_name} - {Tenv.test_suite_name} ON {Env.environment} FINISHED"
+        print(colored(f"TESTING FOR {Env.project_name} - {Tenv.test_suite_name} ON {Env.environment} FINISHED"
                       f" AT {datetime.now().strftime('%d-%m-%Y, %H:%M:%S')}", attrs=[Tenv.stlbold]))
         print()
 

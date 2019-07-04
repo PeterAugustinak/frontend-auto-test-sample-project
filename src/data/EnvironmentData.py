@@ -16,6 +16,9 @@ driver = None
 
 class EnvironmentData:
 
+    # project name
+    project_name = 'FRONTEND AUTO TEST SAMPLE PROJECT'
+
     # arguments for environment and web_driver
     test_suite = str(sys.argv[1])
     environment = str(sys.argv[2])

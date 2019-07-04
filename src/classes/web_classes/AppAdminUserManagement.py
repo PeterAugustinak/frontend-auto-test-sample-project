@@ -49,7 +49,9 @@ class AdminUserManagement:
 
     @staticmethod
     def check_table(table_col, table_row):
-        # create xpath with custom table position
-        um_table_custom_position = Lum.um_table_position_xpath(table_col, table_row)
-        value = Ee.get_text_from_displayed_element(um_table_custom_position)
+
+        um_table = Lum.um_table_position_xpath(table_col, table_row)
+        um_table_alt = Lum.um_table_alt
+
+        value = Ee.get_text_from_displayed_element_special(um_table, um_table_alt)
         return value

@@ -56,12 +56,21 @@ class ElementEngine:
             raise
 
     @staticmethod
-    def wait_until_element_displayed(locator, timeout=30):
+    def wait_until_element_displayed(locator, timeout=10):
         try:
             element = WebDriverWait(driver, timeout).until(expected_conditions.visibility_of_element_located(locator))
             return element
         except TimeoutException:
             raise
+
+    @staticmethod
+    def wait_until_element_displayed_special(locator, locator_alt, timeout=2):
+        try:
+            element = WebDriverWait(driver, timeout).until(expected_conditions.visibility_of_element_located(locator))
+            return element
+        except:
+            element = WebDriverWait(driver, timeout).until(expected_conditions.visibility_of_element_located(locator_alt))
+            return element
 
     @staticmethod
     def wait_until_num_of_elements_lower_than(locator, lower_than_value, timeout=150):
@@ -90,6 +99,13 @@ class ElementEngine:
             return cls.wait_until_element_displayed(locator).text
         except StaleElementReferenceException:
             return cls.wait_until_element_displayed(locator).text
+
+    @classmethod
+    def get_text_from_displayed_element_special(cls, locator, locator_alt):
+        try:
+            return cls.wait_until_element_displayed_special(locator, locator_alt).text
+        except StaleElementReferenceException:
+            return cls.wait_until_element_displayed_special(locator, locator_alt).text
 
     @staticmethod
     def wait_until_element_clickable(locator):

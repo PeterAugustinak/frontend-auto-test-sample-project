@@ -21,6 +21,9 @@ class TestSuiteInitialSetup:
             from test_suits.test_suite_01_admin import TestSuite as Ts
             from classes.web_classes.AppAdminUserManagement import AdminUserManagement as Aum
 
+            print(colored("All below Test Scenarios with all details can be find here:", Tenv.stlts))
+            print(f'{Tenv.test_suite_catalogue}')
+
             # login into APP
             Al.login(Env.app_username, Env.app_password)
             # navigate to Admin

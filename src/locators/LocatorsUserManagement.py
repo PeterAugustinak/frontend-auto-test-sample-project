@@ -12,16 +12,16 @@ class LocatorsUserManagement:
     um_table_username_firstrow = (By.XPATH, '/html/body/div[1]/div[3]/div[2]/div/div/form/div[4]/table/tbody/tr[1]/td[2]')
 
     @staticmethod
-    def um_table_position_xpath(table_col, table_row):
+    def um_table_position_xpath(table_col='Username', table_row=1):
 
         if table_col == 'Username': table_col = 2
         if table_col == 'User Role': table_col = 3
         if table_col == 'Employee Name': table_col = 4
         if table_col == 'Status': table_col = 5
 
-        try:
-            um_table = (By.XPATH, f'/html/body/div[1]/div[3]/div[2]/div/div/form/div[4]/table/tbody/tr[{table_row}]/td[{table_col}]')
-        except:
-            um_table = (By.XPATH, f'/html/body/div[1]/div[3]/div[2]/div/div/form/div[4]/table/tbody/tr/td')
+        um_table = (By.XPATH, f'/html/body/div[1]/div[3]/div[2]/div/div/form/div[4]/table/tbody/tr[{table_row}]/td[{table_col}]')
         return um_table
+
+    um_table_alt = (By.XPATH, f'/html/body/div[1]/div[3]/div[2]/div/div/form/div[4]/table/tbody/tr/td')
+
 
