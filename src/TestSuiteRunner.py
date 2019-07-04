@@ -31,7 +31,7 @@ class TestSuiteRunner:
         In case of some service is unavailable, test running are cancelled.
         """
 
-        print(f"SERVICES CHECK FOR {Env.environment} ENVIRONMENT STARTS:")
+        print(f"SERVICE CHECK FOR {Env.environment} ENVIRONMENT STARTS:")
         service_check = TestService.test_service_runner()
         print("*************************************************************")
         print()
