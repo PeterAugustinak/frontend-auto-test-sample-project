@@ -12,22 +12,16 @@ class TestEvaluation:
     # evaluation of particular Test Case
     @staticmethod
     def test_case_eval(result_test_case):
-
-        if result_test_case[0] == 0:
-            print()
-            for expected in result_test_case[1]:
-                for actual in result_test_case[2]:
+        print(f" {result_test_case[1]}", end='')
+        if result_test_case[0][0] == 0:
+            print(f" FAIL")
+            for expected, actual in zip(result_test_case[0][1], result_test_case[0][2]):
+                if expected != actual:
                     print(f"   Expected value: {expected}, Actual value: {actual}")
-                    if len(Tenv.failed_list) != 0:
-                        print(colored(f"   FAIL", 'red'), end="")
-                        print(f" (List of Failed: {Tenv.failed_list}")
-            print("   *")
-
-        elif result_test_case[0] == 1:
-            print(colored(" OK", 'green'))
-
+        elif result_test_case[0][0] == 1:
+            print(" OK")
         else:
-            print("ERROR: Evaluation Failed ...")
+            print(" ERROR: Evaluation Failed ...")
 
         # this delete list of uuid`s after evaluation of particular Test Cases for whole test scenario is finished so
         # now is prepared empty for the next test scenario

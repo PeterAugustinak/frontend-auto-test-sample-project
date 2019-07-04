@@ -23,15 +23,16 @@ class TestScenario:
     print(title)
     print(description)
     print(f" Details: {details}")
+    print()
 
     # TEST CASES
     '''
     TEST CASE EXPLANATION:
     Every particular test case is list, consists from:
          [
-            [0] description of the test case,
-            [1] list of input values
-            [2] list of EXPECTED VALUES,
+            description of the test case,
+            [list of INPUT VALUES],
+            [list of EXPECTED VALUES],
          ],
     '''
 
@@ -63,10 +64,15 @@ class TestScenario:
 
             # just small hack for better displaying test cases numbering (adding 0 for tc`s lower than 10)
             if test_case_number < 10:
-                test_case_number = f"0{test_case_number}"
+                test_case_number_prnt = f"0{test_case_number}"
+            else:
+                test_case_number_prnt = f"{test_case_number}"
 
+            # test_case[0]: description
+            # test_case[1]: input_data_list
+            # test_case[2]: expected_data_list
             result_test_case = [cls.test_case_execution(test_case[1], test_case[2]),
-                                f"Test Case {test_case_number}: {test_case[0]}"]
+                                f"Test Case {test_case_number_prnt}: {test_case[0]}"]
 
             # this calls method for evaluation of tested test case (for print evaluations only)
             Te.test_case_eval(result_test_case)
@@ -91,23 +97,11 @@ class TestScenario:
 
         Tenv.expected_data_list = expected_data_list
 
-        # open browser
-        Be.open_url(Env.app_url)
-        # login into APP
-        Al.login(Env.app_username, Env.app_password)
-        # navigate to Admin / User Management / Users menu
-        Aum.direct_navigate_users()
-
         # search users by Username
         for user in input_data_list:
             # check value in result table
             Aum.search_by_username(user)
             current_data = Aum.check_table('Employee Name', 1)
             Tenv.actual_data_list.append(current_data)
-
-        # logout from APP
-        Al.logout()
-        # close browser
-        Be.close_browser()
 
         return Tc.compare_test_case_result(Tenv.expected_data_list, Tenv.actual_data_list)

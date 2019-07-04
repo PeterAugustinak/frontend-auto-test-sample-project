@@ -2,7 +2,6 @@
 
 # standard library imports
 from datetime import datetime
-import os
 
 # 3rd party library imports
 from termcolor import colored
@@ -12,11 +11,8 @@ from data.EnvironmentData import EnvironmentData as Env
 from data.TestFrameworkEnvironmentData import TestFrameworkEnvironmentData as Tenv
 
 from classes.test_framework_classes.TestServiceAvailability import TestServicesAvailability as TestService
-from classes.test_framework_classes.TestScenarioResultCounter import TestScenarioResultCounter as Tsrc
-from classes.test_framework_classes.TestEvaluation import TestEvaluation as Evaluation
+from classes.test_framework_classes.TestSuiteInitialSetup import TestSuiteInitialSetup as Tsis
 
-# test suite imports
-from test_suits.test_suite_01_app_user_management import TestSuite as Ts
 
 project_name = 'VISMA-FRONTEND-TEST'
 
@@ -26,8 +22,8 @@ class TestSuiteRunner:
     This class handles running of Test Suite for particular sport and entity.
     """
 
-    @staticmethod
-    def services_check():
+    @classmethod
+    def services_check(cls):
         """
         This method is starting all the Automation Test by checking of availability of all services necessary for
         executing particular tests.
@@ -42,7 +38,7 @@ class TestSuiteRunner:
         print()
 
         if service_check:
-            TestSuiteRunner.test_suite_runner()
+            cls.test_suite_runner()
         else:
             Tenv.overall_result = "FAIL!"
 
@@ -54,40 +50,21 @@ class TestSuiteRunner:
         """
 
         # introductory screen
-        print(colored(f"TESTING FOR {project_name} - {Ts.test_suite_name} HAS BEEN STARTED"
+        print(colored(f"TESTING FOR {project_name} - {Tenv.test_suite_name} HAS BEEN STARTED"
                       f" AT {datetime.now().strftime('%d-%m-%Y, %H:%M:%S')}!", attrs=[Tenv.stlbold]))
         print("Environment: " + colored(Env.environment, attrs=[Tenv.stlbold]))
         print(colored("All below Test Scenarios with all details can be find here:", Tenv.stlts))
-        print('... link to Test Catalogue will be added ...')
+        print(f'{Tenv.test_suite_catalogue}')
         print("***************************************************")
         print()
 
-        # now is called method for listing up all the test scenarios and it`s data - core of the automation test
-        TestSuiteRunner.test_data_runner()
+        # now starts initialization of test suite and entire process of test suite testing
+        Tsis.test_suite_initial_setup()
 
         # closing screen
-        print(colored(f"TESTING FOR {project_name} - {Ts.test_suite_name} ON {Env.environment} FINISHED"
+        print(colored(f"TESTING FOR {project_name} - {Tenv.test_suite_name} ON {Env.environment} FINISHED"
                       f" AT {datetime.now().strftime('%d-%m-%Y, %H:%M:%S')}", attrs=[Tenv.stlbold]))
         print()
-
-    @staticmethod
-    def test_data_runner():
-        """
-        This method at first set data for current sport, then reads Test Scenarios according to called sport value and
-        entity value and also updates Jira results by calling UpdateJira class. In the end sets origin data back.
-        """
-        # initiation of list with result of each tested test scenario
-        test_scenario_result_list = []
-
-        # take every test scenario from imported list
-        # example: [ts_01_foo ["DEV", "STAG"]]
-        for test_scenario in Ts.test_scenario_list:
-            if Env.environment in test_scenario[1]:  # check if has "DEV"/"STAG" value. If true, continue with run this
-                # test scenario (ex. test_scenario[0] -> ts_01_foo) and add returned value into result list (0/1)
-                test_scenario_result_list.append(Tsrc.test_scenario_result(test_scenario[0]))
-
-        # method for evaluation of the every test suite based on test_scenario_result_list is called here
-        Evaluation.test_suite_eval(test_scenario_result_list)
 
 
 if __name__ == '__main__':

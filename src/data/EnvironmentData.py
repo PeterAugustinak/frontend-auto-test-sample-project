@@ -17,8 +17,9 @@ driver = None
 class EnvironmentData:
 
     # arguments for environment and web_driver
-    environment = str(sys.argv[1])
-    web_driver = str(sys.argv[2])
+    test_suite = str(sys.argv[1])
+    environment = str(sys.argv[2])
+    web_driver = str(sys.argv[3])
 
     # WEB DRIVER
     if web_driver == 'FIREFOX':

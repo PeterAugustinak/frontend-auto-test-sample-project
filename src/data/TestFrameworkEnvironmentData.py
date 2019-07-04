@@ -3,6 +3,10 @@
 
 class TestFrameworkEnvironmentData:
 
+    # global used elements
+    test_suite_name = ''
+    test_suite_catalogue = '... link to Test Catalogue will be added ...'
+
     # global used lists
     expected_data_list = []
     actual_data_list = []

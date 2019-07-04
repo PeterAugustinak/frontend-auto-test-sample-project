@@ -5,7 +5,8 @@ from test_suits.test_scenarios_for_test_suite_01.ts_01_user_search import TestSc
 
 
 class TestSuite:
-    test_suite_name = 'APP USER MANAGEMENT'
+    test_suite_name = 'APP ADMIN TEST SUITE'
+    test_suite_catalogue = 'http://www.testsuitecatalogue.com'
 
     """
     list of test scenarios to be tested in format:

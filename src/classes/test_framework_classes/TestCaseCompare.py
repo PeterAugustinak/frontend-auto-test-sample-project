@@ -13,17 +13,16 @@ class TestCaseCompare:
         """
 
         if_passed = 1
-        for expected_data in expected_data_list:
-            for actual_data in actual_data_list:
-                if expected_data == actual_data:
-                    continue
-                else:
-                    if_passed = 0
-                    Tenv.failed_list.append(Tenv.current_element)
-                    continue
+        for expected_data, actual_data in zip(expected_data_list, actual_data_list):
+            if expected_data == actual_data:
+                continue
+            else:
+                if_passed = 0
+                # Tenv.failed_list.append(Tenv.current_element)
+                continue
 
         # empty global expected / actual data lists
-        Tenv.actual_data = []
-        Tenv.data_new_list = []
+        Tenv.expected_data_list = []
+        Tenv.actual_data_list = []
 
         return [if_passed, expected_data_list, actual_data_list]
