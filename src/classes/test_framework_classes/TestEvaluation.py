@@ -40,17 +40,17 @@ class TestEvaluation:
                 fail_result_list.append(1)
                 Tenv.total_failed_test_cases.append(1)
 
-        print("  *")
+        print()
         print(f" RESULT ({len(test_cases_result_list)} Test Cases) ---> ", end="")
         if len(final_eval_list) == len(test_cases_result_list):
             print("OK")
-            print("--------------------------------------------")
+            print("------------------------------------------------------")
             return 1
 
         else:
             print("FAIL")
             print(f" Failed Test Cases: {len(fail_result_list)}")
-            print("--------------------------------------------")
+            print("------------------------------------------------------")
             return 0
 
     # evaluation of particular Test Suite

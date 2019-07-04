@@ -24,10 +24,10 @@ class AppLogin:
 
         # click to login button
         Ee.custom_click(Agl.login_button)
-        time.sleep(5)
+        time.sleep(2)
 
-        # wait until logout button is displayed
-        # Ee.wait_until_element_displayed(Agl.panel_wrapper)
+        # wait until menu panel is displayed
+        # Ee.wait_until_element_displayed(Agl.menu_admin)
 
     @staticmethod
     def logout():

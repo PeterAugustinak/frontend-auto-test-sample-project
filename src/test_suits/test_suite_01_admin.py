@@ -5,6 +5,7 @@ from test_suits.test_scenarios_for_test_suite_01.ts_01_user_search import TestSc
 
 
 class TestSuite:
+
     test_suite_name = 'TEST SUITE 01 APP ADMIN'
     test_suite_catalogue = 'http://www.testsuitecatalogue.com'
 

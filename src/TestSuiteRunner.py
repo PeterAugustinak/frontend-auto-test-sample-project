@@ -14,7 +14,7 @@ from classes.test_framework_classes.TestSuiteInitialSetup import TestSuiteInitia
 if Env.test_suite == 'test_suite_01_admin':
     from test_suits.test_suite_01_admin import TestSuite as Ts
 else:
-    print('Test Suite not found!')
+    Tenv.test_suite_exist = 0
 
 
 class TestSuiteRunner:
@@ -24,7 +24,6 @@ class TestSuiteRunner:
 
     @classmethod
     def services_check(cls):
-        print('1')
         """
         This method is starting all the Automation Test by checking of availability of all services necessary for
         executing particular tests.
@@ -49,23 +48,27 @@ class TestSuiteRunner:
         running particular scenarios.
         """
 
-        print('2')
-        # introductory screen
-        print(f"TESTING FOR {Env.project_name} HAS BEEN STARTED AT {datetime.now().strftime('%d-%m-%Y, %H:%M:%S')}!")
-        print(f"Environment: {Env.environment}")
-        print(f"Test Suite: {Ts.test_suite_name}")
-        print("All below Test Scenarios with all details can be find here:")
-        print(f'{Ts.test_suite_catalogue}')
-        print("*************************************************************")
-        print()
+        if Tenv.test_suite_exist:  # test suite was correctly imported
+            # introductory screen
+            print(f"TESTING FOR {Env.project_name} HAS BEEN STARTED AT {datetime.now().strftime('%d-%m-%Y, %H:%M:%S')}!")
+            print(f"Environment: {Env.environment}")
+            print(f"Test Suite: {Ts.test_suite_name}")
+            print("All below Test Scenarios with all details can be find here:")
+            print(f'{Ts.test_suite_catalogue}')
+            print("*************************************************************")
+            print()
 
-        # now starts initialization of test suite and entire process of test suite testing
-        Tsis.test_suite_initial_setup(Ts)
+            # now starts initialization of test suite and entire process of test suite testing
+            Tsis.test_suite_initial_setup(Ts)
 
-        # closing screen
-        print(f"TESTING FOR {Env.project_name} - {Ts.test_suite_name} ON {Env.environment} FINISHED AT "
-              f"{datetime.now().strftime('%d-%m-%Y, %H:%M:%S')}")
-        print()
+            # closing screen
+            print(f"TESTING FOR {Env.project_name} - {Ts.test_suite_name} ON {Env.environment} FINISHED AT "
+                  f"{datetime.now().strftime('%d-%m-%Y, %H:%M:%S')}")
+            print()
+        else:  # test suite was not found and not imported
+            print("Test Suite not found. Automation Testing Aborted.")
+            from classes.web_classes.BrowserEngine import BrowserEngine as Be
+            Be.close_browser()
 
 
 if __name__ == '__main__':

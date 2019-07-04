@@ -18,7 +18,6 @@ class TestSuiteInitialSetup:
         Be.open_url(Env.app_url)
 
         # based on particular test suite, initialize web navigation specific for this test suite
-        print('3')
         if test_suite.test_suite_name == 'TEST SUITE 01 APP ADMIN':
             from classes.web_classes.AppAdminUserManagement import AdminUserManagement as Aum
 
@@ -42,7 +41,6 @@ class TestSuiteInitialSetup:
 
     @staticmethod
     def test_data_runner(test_scenario_list):
-        print('4')
         """
         This method at first set data for current sport, then reads Test Scenarios according to called sport value and
         entity value and also updates Jira results by calling UpdateJira class. In the end sets origin data back.

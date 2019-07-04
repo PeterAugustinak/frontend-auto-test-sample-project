@@ -8,17 +8,12 @@ from classes.web_classes.AppAdminUserManagement import AdminUserManagement as Au
 
 
 class TestScenario:
-    print('5')
+
+    # TEST SCENARIO DATA
     # general information of the Test Scenario
     title = 'TEST SCENARIO 01 USER SEARCH: '
     description = ' Test if specific user is present in table of user list'
-    details = ''
-
-    # display information about particular test scenario
-    print(title)
-    print(description)
-    print(f" Details: {details}")
-    print()
+    details = ' http://www.testscenario.com'
 
     # TEST CASES
     '''
@@ -41,7 +36,7 @@ class TestScenario:
 
         # 02
         [
-            'Test for search non existing useres: ',
+            'Test for search non existing users: ',
             ['Peter', 'Rafael', 'Tadas'],
             ['No Records Found']
         ]
@@ -50,6 +45,13 @@ class TestScenario:
     # runner method for start scenario and to create particular test cases
     @classmethod
     def test_case_runner(cls):
+
+        # display information about particular test scenario
+        print(cls.title)
+        print(cls.description)
+        print(f" Details: {cls.details}")
+        print()
+
         # initialization of list with test cases result and numbering of particular tested test case
         test_cases_result_list = []
         test_case_number = 1

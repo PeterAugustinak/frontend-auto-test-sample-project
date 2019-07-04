@@ -12,6 +12,7 @@ class LocatorsGeneral:
     # main page
     panel_wrapper = (By.XPATH, '//*[@id="panel_wrapper_1"]')
     welcome_admin_menu = (By.XPATH, '//*[@id="welcome"]')
+    menu_panel = (By.XPATH, '/html/body/div[1]/div[2]')
     logout_item = (By.XPATH, '/html/body/div[1]/div[1]/div[2]/ul/li[2]/a')
 
     # main page menu
