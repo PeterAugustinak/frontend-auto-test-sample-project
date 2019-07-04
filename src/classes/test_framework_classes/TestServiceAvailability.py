@@ -1,12 +1,10 @@
-# This is service availability check for VISMA-FRONTEND-TEST project
+# This is service availability check for FRONTEND AUTO TEST SAMPLE PROJECT project
 
 # 3rd party library imports
-from termcolor import colored
 import requests
 
 # local library imports
 from data.EnvironmentData import EnvironmentData as Env
-from data.TestFrameworkEnvironmentData import TestFrameworkEnvironmentData as Tenv
 
 
 class TestServicesAvailability:
@@ -15,8 +13,8 @@ class TestServicesAvailability:
     # added into this list
     lst_of_na_services = []
 
-    service_unavailable = colored(f" UNAVAILABLE", Tenv.stlfail)
-    service_ok = colored(" OK", Tenv.stlpass)
+    service_unavailable = f" UNAVAILABLE"
+    service_ok = f" OK"
 
     # EVALUATION OF ENTIRE SERVICE CHECK
     @staticmethod
@@ -33,14 +31,13 @@ class TestServicesAvailability:
 
         # Evaluate entire service check based on lis_of_na_services
         if len(TestServicesAvailability.lst_of_na_services) == 0:
-            print(colored("ALL SERVICES FOR VISMA-FRONTEND-TEST AVAILABLE. TESTS CAN START.", Tenv.stlpass))
+            print(f"ALL SERVICES FOR {Env.project_name} AVAILABLE. TESTS CAN START.")
             return True
         else:
             print()
             print("Some services requiered for VISMA-FRONTEND-TEST testing are unavailable.")
             print("Check above services and restart the tests.")
-            print(colored("AUTOMATION TESTING FOR " + Env.environment + " ENV ABORTED (NOT FAIL!).",
-                          Tenv.stlfail))
+            print("AUTOMATION TESTING FOR " + Env.environment + " ENV ABORTED (NOT FAIL!)")
             return False
 
     # TEST FOR WEB APP AVAILABILITY:

@@ -1,19 +1,14 @@
-# this is Test Scenario ts_01_user_table_row_check
+# this is Test Scenario ts_01_user_search
 
 # local library imports
-from data.EnvironmentData import EnvironmentData as Env
 from data.TestFrameworkEnvironmentData import TestFrameworkEnvironmentData as Tenv
 from classes.test_framework_classes.TestCaseCompare import TestCaseCompare as Tc
 from classes.test_framework_classes.TestEvaluation import TestEvaluation as Te
-from classes.web_classes.BrowserEngine import BrowserEngine as Be
-from classes.web_classes.AppLogin import AppLogin as Al
 from classes.web_classes.AppAdminUserManagement import AdminUserManagement as Aum
-
-# 3rd party library imports
 
 
 class TestScenario:
-
+    print('5')
     # general information of the Test Scenario
     title = 'TEST SCENARIO 01 USER SEARCH: '
     description = ' Test if specific user is present in table of user list'

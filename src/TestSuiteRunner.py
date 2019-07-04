@@ -1,10 +1,7 @@
-# this is universal Test Suite Runner for every test suite within VISMA-FRONTEND-TEST project
+# this is universal TestSuiteRunner for 'FRONTEND AUTO TEST SAMPLE PROJECT'
 
 # standard library imports
 from datetime import datetime
-
-# 3rd party library imports
-from termcolor import colored
 
 # local application imports
 from data.EnvironmentData import EnvironmentData as Env
@@ -13,7 +10,12 @@ from data.TestFrameworkEnvironmentData import TestFrameworkEnvironmentData as Te
 from classes.test_framework_classes.TestServiceAvailability import TestServicesAvailability as TestService
 from classes.test_framework_classes.TestSuiteInitialSetup import TestSuiteInitialSetup as Tsis
 
-# test suite
+# test suite imports
+if Env.test_suite == 'test_suite_01_admin':
+    from test_suits.test_suite_01_admin import TestSuite as Ts
+else:
+    print('Test Suite not found!')
+
 
 class TestSuiteRunner:
     """
@@ -22,6 +24,7 @@ class TestSuiteRunner:
 
     @classmethod
     def services_check(cls):
+        print('1')
         """
         This method is starting all the Automation Test by checking of availability of all services necessary for
         executing particular tests.
@@ -29,10 +32,9 @@ class TestSuiteRunner:
         In case of some service is unavailable, test running are cancelled.
         """
 
-        print(colored(f"SERVICES CHECK FOR {Env.environment} ENVIRONMENT STARTS:",
-                      attrs=[Tenv.stlundr, Tenv.stlbold]))
+        print(f"SERVICES CHECK FOR {Env.environment} ENVIRONMENT STARTS:")
         service_check = TestService.test_service_runner()
-        print("*******************************************************")
+        print("*************************************************************")
         print()
 
         if service_check:
@@ -47,21 +49,22 @@ class TestSuiteRunner:
         running particular scenarios.
         """
 
+        print('2')
         # introductory screen
-        print(colored(f"TESTING FOR {Env.project_name} HAS BEEN STARTED"
-                      f" AT {datetime.now().strftime('%d-%m-%Y, %H:%M:%S')}!", attrs=[Tenv.stlbold]))
-        print("Environment: " + colored(Env.environment, attrs=[Tenv.stlbold]))
-        print(colored("All below Test Scenarios with all details can be find here:", Tenv.stlts))
-        print(f'{Tenv.test_suite_catalogue}')
-        print("***************************************************")
+        print(f"TESTING FOR {Env.project_name} HAS BEEN STARTED AT {datetime.now().strftime('%d-%m-%Y, %H:%M:%S')}!")
+        print(f"Environment: {Env.environment}")
+        print(f"Test Suite: {Ts.test_suite_name}")
+        print("All below Test Scenarios with all details can be find here:")
+        print(f'{Ts.test_suite_catalogue}')
+        print("*************************************************************")
         print()
 
         # now starts initialization of test suite and entire process of test suite testing
-        Tsis.test_suite_initial_setup()
+        Tsis.test_suite_initial_setup(Ts)
 
         # closing screen
-        print(colored(f"TESTING FOR {Env.project_name} - {Tenv.test_suite_name} ON {Env.environment} FINISHED"
-                      f" AT {datetime.now().strftime('%d-%m-%Y, %H:%M:%S')}", attrs=[Tenv.stlbold]))
+        print(f"TESTING FOR {Env.project_name} - {Ts.test_suite_name} ON {Env.environment} FINISHED AT "
+              f"{datetime.now().strftime('%d-%m-%Y, %H:%M:%S')}")
         print()
 
 

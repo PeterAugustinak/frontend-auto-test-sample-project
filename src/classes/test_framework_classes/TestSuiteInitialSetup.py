@@ -12,17 +12,15 @@ from classes.test_framework_classes.TestEvaluation import TestEvaluation as Eval
 class TestSuiteInitialSetup:
 
     @classmethod
-    def test_suite_initial_setup(cls):
+    def test_suite_initial_setup(cls, test_suite):
 
-        # open browser
+        # open browser (same for every test suite)
         Be.open_url(Env.app_url)
 
-        if Env.test_suite == 'test_suite_01_admin':
-            from test_suits.test_suite_01_admin import TestSuite as Ts
+        # based on particular test suite, initialize web navigation specific for this test suite
+        print('3')
+        if test_suite.test_suite_name == 'TEST SUITE 01 APP ADMIN':
             from classes.web_classes.AppAdminUserManagement import AdminUserManagement as Aum
-
-            print(colored("All below Test Scenarios with all details can be find here:", Tenv.stlts))
-            print(f'{Tenv.test_suite_catalogue}')
 
             # login into APP
             Al.login(Env.app_username, Env.app_password)
@@ -31,14 +29,12 @@ class TestSuiteInitialSetup:
 
         else:
             Tenv.test_suite_name = 'Test Suite name not found'
-            Tenv.test_suite_catalogue = 'Test Suite Catalogue does not found'
-
-        Tenv.test_suite_name = Ts.test_suite_name
-        Tenv.test_suite_catalogue = Ts.test_suite_catalogue
+            Tenv.test_suite_catalogue = 'Test Suite Catalogue not found'
 
         # start method for running data of Test Suite
-        cls.test_data_runner(Ts.test_scenario_list)
+        cls.test_data_runner(test_suite.test_scenario_list)
 
+        # after entire testing of entire test suite is done:
         # logout from APP
         Al.logout()
         # close browser
@@ -46,6 +42,7 @@ class TestSuiteInitialSetup:
 
     @staticmethod
     def test_data_runner(test_scenario_list):
+        print('4')
         """
         This method at first set data for current sport, then reads Test Scenarios according to called sport value and
         entity value and also updates Jira results by calling UpdateJira class. In the end sets origin data back.
