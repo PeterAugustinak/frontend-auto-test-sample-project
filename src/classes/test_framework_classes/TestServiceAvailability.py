@@ -1,7 +1,8 @@
 # This is service availability check for VISMA-FRONTEND-TEST project
 
-# standard library imports
+# 3rd party library imports
 from termcolor import colored
+import requests
 
 # local library imports
 from data.EnvironmentData import EnvironmentData as Env
@@ -42,13 +43,17 @@ class TestServicesAvailability:
                           Tenv.stlfail))
             return False
 
-    # TEST FOR APP AVAILABILITY:
+    # TEST FOR WEB APP AVAILABILITY:
     @staticmethod
     def app_availability_check():
         service_name = "WEB APP"
         print(service_name, end="")
-        test = True
-
+        test = requests.get(Env.app_url)
+        test = test.status_code
+        if test == 200:
+            test = True
+        else:
+            test = False
         TestServicesAvailability.availability_resolution(test, service_name)
 
     # TEST FOR foo:

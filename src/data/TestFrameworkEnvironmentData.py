@@ -4,8 +4,8 @@
 class TestFrameworkEnvironmentData:
 
     # global used lists
-    data_list = []
-    data_new_list = []
+    expected_data_list = []
+    actual_data_list = []
     failed_list = []
     current_element = ""
 

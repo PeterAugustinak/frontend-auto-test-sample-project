@@ -2,6 +2,7 @@
 
 # standard library imports
 from datetime import datetime
+import os
 
 # 3rd party library imports
 from termcolor import colored
@@ -91,4 +92,3 @@ class TestSuiteRunner:
 
 if __name__ == '__main__':
     TestSuiteRunner.services_check()
-

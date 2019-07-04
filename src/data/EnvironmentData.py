@@ -11,6 +11,8 @@ config_parser = configparser.RawConfigParser()
 config_file_path = os.path.join(os.path.dirname(__file__), "..", "data", "config.ini")
 config_parser.read_file(open(config_file_path))
 
+driver = None
+
 
 class EnvironmentData:
 

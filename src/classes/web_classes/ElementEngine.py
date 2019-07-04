@@ -6,7 +6,6 @@ import inspect
 # 3rd party library imports
 from selenium.common.exceptions import TimeoutException, StaleElementReferenceException
 from selenium.webdriver import ActionChains
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 
@@ -84,3 +83,25 @@ class ElementEngine:
             except:
                 time.sleep(3)
                 return driver.find_elements(*locator)
+
+    @classmethod
+    def get_text_from_displayed_element(cls, locator):
+        try:
+            return cls.wait_until_element_displayed(locator).text
+        except StaleElementReferenceException:
+            return cls.wait_until_element_displayed(locator).text
+
+    @staticmethod
+    def wait_until_element_clickable(locator):
+        try:
+            elements = WebDriverWait(driver, 180).until(expected_conditions.element_to_be_clickable(locator))
+            return elements
+        except TimeoutException:
+            raise
+
+    @staticmethod
+    def mouse_over_under_element(locator):
+        action = ActionChains(driver)
+        element = action.move_to_element(locator).perform()
+        return element
+

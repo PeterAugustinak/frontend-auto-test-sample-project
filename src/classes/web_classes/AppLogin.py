@@ -1,12 +1,10 @@
-# This class log in ro and log out from the App
+# This class log into and log out from the App
 
 # standard library imports
 import time
 
 # local library imports
-from locators.GeneralLocators import AppGeneralLocators as Agl
-from data.EnvironmentData import EnvironmentData as Env
-from classes.web_classes.BrowserEngine import BrowserEngine
+from locators.LocatorsGeneral import LocatorsGeneral as Agl
 from classes.web_classes.ElementEngine import ElementEngine as Ee
 
 
@@ -40,13 +38,13 @@ class AppLogin:
         Ee.wait_until_element_displayed(Agl.login_button)
 
 
-BrowserEngine.open_url(Env.app_url)
-time.sleep(2)
-AppLogin.login(Env.app_username, Env.app_password)
-time.sleep(2)
-AppLogin.logout()
-time.sleep(2)
-BrowserEngine.close_browser()
+# BrowserEngine.open_url(Env.app_url)
+# time.sleep(2)
+# AppLogin.login(Env.app_username, Env.app_password)
+# time.sleep(2)
+# AppLogin.logout()
+# time.sleep(2)
+# BrowserEngine.close_browser()
 
 
 
