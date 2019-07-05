@@ -5,15 +5,21 @@ from data.TestFrameworkEnvironmentData import TestFrameworkEnvironmentData as Te
 from classes.test_framework_classes.TestCaseCompare import TestCaseCompare as Tc
 from classes.test_framework_classes.TestEvaluation import TestEvaluation as Te
 from classes.web_classes.AppAdminUserManagement import AdminUserManagement as Aum
+from classes.general_classes.SpreadSheetReader import SpreadSheetReader as Ssr
 
 
 class TestScenario:
 
+    # data for spreadsheet reader
+    ts_file_name = 'ts_01_user_search'
+    worksheet_info = 'info'
+    worksheet_data = 'data'
+
     # TEST SCENARIO DATA
     # general information of the Test Scenario
-    title = 'TEST SCENARIO 01 USER SEARCH: '
-    description = ' Test if specific user is present in table of user list'
-    details = ' http://www.testscenario.com'
+    title = f'{Ssr.read_info(ts_file_name, worksheet_info, 4, 3)}: '
+    description = f' {Ssr.read_info(ts_file_name, worksheet_info, 5, 3)}'
+    details = f' Details: {Ssr.read_info(ts_file_name, worksheet_info, 6, 3)}: '
 
     # TEST CASES
     '''
@@ -49,7 +55,7 @@ class TestScenario:
         # display information about particular test scenario
         print(cls.title)
         print(cls.description)
-        print(f" Details: {cls.details}")
+        print(cls.details)
         print()
 
         # initialization of list with test cases result and numbering of particular tested test case
