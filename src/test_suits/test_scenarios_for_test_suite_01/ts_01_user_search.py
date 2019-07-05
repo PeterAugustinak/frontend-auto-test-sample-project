@@ -12,14 +12,12 @@ class TestScenario:
 
     # data for spreadsheet reader
     ts_file_name = 'ts_01_user_search'
-    worksheet_info = 'info'
-    worksheet_data = 'data'
 
     # TEST SCENARIO DATA
     # general information of the Test Scenario
-    title = f'{Ssr.read_info(ts_file_name, worksheet_info, 4, 3)}: '
-    description = f' {Ssr.read_info(ts_file_name, worksheet_info, 5, 3)}'
-    details = f' Details: {Ssr.read_info(ts_file_name, worksheet_info, 6, 3)}: '
+    title = f'{Ssr.read_ts_info(ts_file_name, 4, 3)}: '
+    description = f' Description: {Ssr.read_ts_info(ts_file_name, 5, 3)}'
+    details = f' Details: {Ssr.read_ts_info(ts_file_name, 6, 3)}'
 
     # TEST CASES
     '''
@@ -35,17 +33,11 @@ class TestScenario:
     test_cases_list = [
         # 01
         [
-            'Test for search of existing users: ',
-            ['Admin', 'fiona.grace', 'hannah.flores'],
-            ['', 'Fiona Grace', 'Hannah Flores']
+            f'{Ssr.read_ts_info(ts_file_name, 13, 7)}: ',
+            Ssr.read_ts_data(ts_file_name, 5),
+            Ssr.read_ts_data(ts_file_name, 6)
         ],
 
-        # 02
-        [
-            'Test for search non existing users: ',
-            ['Peter', 'Rafael', 'Tadas'],
-            ['No Records Found']
-        ]
     ]
 
     # runner method for start scenario and to create particular test cases
