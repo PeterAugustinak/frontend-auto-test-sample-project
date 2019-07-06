@@ -1,4 +1,4 @@
-# This is the engine for reading from Test Scenario spread sheets
+# This is the engine for manipulating Test Scenario spread sheets
 
 # standard library imports
 import os
@@ -10,6 +10,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 class SpreadSheetReader:
 
+    # this method opens spreadsheet with particular worksheet from google drive based on API credentials
     @staticmethod
     def open_sheet(name, sheet):
         file_path = os.path.join(os.path.dirname(__file__), "..", "general_classes", "frontend-auto-secret.json")

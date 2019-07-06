@@ -2,9 +2,11 @@
 
 # 3rd party library imports
 import requests
+from colorama import Fore
 
 # local library imports
 from data.EnvironmentData import EnvironmentData as Env
+from data.TestFrameworkEnvironmentData import TestFrameworkEnvironmentData as Tenv
 
 
 class TestServicesAvailability:
@@ -13,8 +15,8 @@ class TestServicesAvailability:
     # added into this list
     lst_of_na_services = []
 
-    service_unavailable = f" UNAVAILABLE"
-    service_ok = f" OK"
+    service_unavailable = f" {Tenv.unavailable}"
+    service_ok = f" {Tenv.ok}"
 
     # EVALUATION OF ENTIRE SERVICE CHECK
     @staticmethod
@@ -31,13 +33,13 @@ class TestServicesAvailability:
 
         # Evaluate entire service check based on lis_of_na_services
         if len(TestServicesAvailability.lst_of_na_services) == 0:
-            print(f"ALL SERVICES FOR {Env.project_name} AVAILABLE. TESTS CAN START.")
+            print(f"ALL SERVICES AVAILABLE. TESTS CAN START.")
             return True
         else:
             print()
             print("Some services requiered for VISMA-FRONTEND-TEST testing are unavailable.")
             print("Check above services and restart the tests.")
-            print("AUTOMATION TESTING FOR " + Env.environment + " ENV ABORTED (NOT FAIL!)")
+            print(f"{Fore.RED}AUTOMATION TESTING FOR {Env.environment} ENV ABORTED (NOT FAIL!){Fore.RESET}")
             return False
 
     # TEST FOR WEB APP AVAILABILITY:

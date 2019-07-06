@@ -7,6 +7,9 @@ from classes.test_framework_classes.TestEvaluation import TestEvaluation as Te
 from classes.web_classes.AppAdminUserManagement import AdminUserManagement as Aum
 from classes.general_classes.SpreadSheetReader import SpreadSheetReader as Ssr
 
+# 3rd party library imports
+from colorama import Fore
+
 
 class TestScenario:
 
@@ -15,9 +18,9 @@ class TestScenario:
 
     # TEST SCENARIO DATA
     # general information of the Test Scenario
-    title = f'{Ssr.read_ts_info(ts_file_name, 4, 3)}: '
+    title = f'{Fore.YELLOW}{Ssr.read_ts_info(ts_file_name, 4, 3)}: {Fore.RESET}'
     description = f' Description: {Ssr.read_ts_info(ts_file_name, 5, 3)}'
-    details = f' Details: {Ssr.read_ts_info(ts_file_name, 6, 3)}'
+    details = f' Details: {Fore.BLUE}{Ssr.read_ts_info(ts_file_name, 6, 3)}{Fore.RESET}'
 
     # TEST CASES
     '''

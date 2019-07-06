@@ -10,6 +10,10 @@ from data.TestFrameworkEnvironmentData import TestFrameworkEnvironmentData as Te
 from classes.test_framework_classes.TestServiceAvailability import TestServicesAvailability as TestService
 from classes.test_framework_classes.TestSuiteInitialSetup import TestSuiteInitialSetup as Tsis
 
+# 3rd party library imports
+from colorama import Fore, Style, init
+init()
+
 # test suite imports
 if Env.test_suite == 'test_suite_01_admin':
     from test_suits.test_suite_01_admin import TestSuite as Ts
@@ -31,7 +35,7 @@ class TestSuiteRunner:
         In case of some service is unavailable, test running are cancelled.
         """
 
-        print(f"SERVICE CHECK FOR {Env.environment} ENVIRONMENT STARTS:")
+        print(f"{Style.BRIGHT}SERVICES CHECK FOR {Env.environment} ENVIRONMENT STARTS:{Style.RESET_ALL}")
         service_check = TestService.test_service_runner()
         print("*************************************************************")
         print()
@@ -50,11 +54,11 @@ class TestSuiteRunner:
 
         if Tenv.test_suite_exist:  # test suite was correctly imported
             # introductory screen
-            print(f"TESTING FOR {Env.project_name} HAS BEEN STARTED AT {datetime.now().strftime('%d-%m-%Y, %H:%M:%S')}!")
+            print(f"{Style.BRIGHT}TESTING FOR {Env.project_name} HAS BEEN STARTED AT {datetime.now().strftime('%d-%m-%Y, %H:%M:%S')}!{Style.RESET_ALL}")
             print(f"Environment: {Env.environment}")
             print(f"Test Suite: {Ts.test_suite_name}")
-            print("All below Test Scenarios with all details can be find here:")
-            print(f'{Ts.test_suite_catalogue}')
+            print(f"All below Test Scenarios with all details can be find here:")
+            print(f'{Fore.BLUE}{Ts.test_suite_catalogue}{Fore.RESET}')
             print("*************************************************************")
             print()
 

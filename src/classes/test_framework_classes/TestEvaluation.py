@@ -1,6 +1,10 @@
 # these are methods for evaluation of particular test stage - test case, test scenario, test suite
 
+# local library imports
 from data.TestFrameworkEnvironmentData import TestFrameworkEnvironmentData as Tenv
+
+# 3rd party libary imports
+from colorama import Fore
 
 
 class TestEvaluation:
@@ -13,12 +17,12 @@ class TestEvaluation:
     def test_case_eval(result_test_case):
         print(f" {result_test_case[1]}", end='')
         if result_test_case[0][0] == 0:
-            print(f" FAIL")
+            print(Tenv.fail)
             for expected, actual in zip(result_test_case[0][1], result_test_case[0][2]):
                 if expected != actual:
                     print(f"   Expected value: {expected}, Actual value: {actual}")
         elif result_test_case[0][0] == 1:
-            print(" OK")
+            print(Tenv.ok)
         else:
             print(" ERROR: Evaluation Failed ...")
 
@@ -41,16 +45,18 @@ class TestEvaluation:
                 Tenv.total_failed_test_cases.append(1)
 
         print()
-        print(f" RESULT ({len(test_cases_result_list)} Test Cases) ---> ", end="")
+        print(f" {Fore.YELLOW}RESULT ({len(test_cases_result_list)} Test Cases) ---> ", end="")
+        f"{Fore.RESET}"
         if len(final_eval_list) == len(test_cases_result_list):
-            print("OK")
-            print("------------------------------------------------------")
+            print(Tenv.ok)
+            print("------------------------------------------------------------")
             return 1
 
         else:
-            print("FAIL")
+            print(Tenv.fail)
             print(f" Failed Test Cases: {len(fail_result_list)}")
-            print("------------------------------------------------------")
+            f"{Fore.RESET}"
+            print("------------------------------------------------------------")
             return 0
 
     # evaluation of particular Test Suite
@@ -78,12 +84,12 @@ class TestEvaluation:
         # count total passed test cases
         tot_pass_test_cases = Tenv.overall_tc - tot_fail_test_cases
 
-        print(f"PASSED: {Tenv.overall_pass} ({tot_pass_test_cases} Test Cases)")
+        print(f"{Tenv.passed} {Tenv.overall_pass} ({tot_pass_test_cases} Test Cases)")
 
         # count overall failed test scenarios
         overall_fail = len_tested_scenarios - Tenv.overall_pass
 
-        print(f"FAILED: {overall_fail} ({len(Tenv.total_failed_test_cases)} Test Cases)")
+        print(f"{Tenv.failed} {overall_fail} ({len(Tenv.total_failed_test_cases)} Test Cases)")
 
         # count passed ratio
         if tot_pass_test_cases == 0 and tot_fail_test_cases == 0:
@@ -96,8 +102,11 @@ class TestEvaluation:
             passed_ratio = round((100 / Tenv.overall_tc) * tot_pass_test_cases, 2)
 
         print(f"PASSED RATIO: {passed_ratio}%")
-        print()
-        print("OVERALL RESULT: ", end="")
-        print(Tenv.overall_result)
+        if Tenv.overall_result == "PASS":
+            print(f"{Fore.GREEN}")
+        else:
+            print(f"{Fore.RED}")
+        print(f"OVERALL RESULT: {Tenv.overall_result}")
+        print(Fore.RESET)
         print()
 

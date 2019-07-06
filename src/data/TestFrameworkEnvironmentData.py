@@ -1,11 +1,13 @@
 # These are data manipulated and used by test framework
 
+# 3rd party imports
+from colorama import Fore, Style
+
 
 class TestFrameworkEnvironmentData:
 
     # global used elements
     test_suite_exist = 1
-    test_suite_catalogue = '... link to Test Catalogue will be added ...'
 
     # global used lists
     expected_data_list = []
@@ -20,9 +22,11 @@ class TestFrameworkEnvironmentData:
     overall_result = ""
 
     # style scheme for log output
-    stlfail = 'red'
-    stlpass = 'green'
-    stlts = 'yellow'
-    stlimportant = 'red'
-    stlbold = 'bold'
-    stlundr = 'underline'
+    ok = f"{Fore.GREEN}OK{Fore.RESET}"
+    fail = f"{Fore.RED}FAIL{Fore.RESET}"
+    unavailable = f"{Fore.RED}UNAVAILABLE{Fore.RESET}"
+    pass_overall = f"{Fore.GREEN, Style.BRIGHT}PASS!{Style.RESET_ALL}"
+    fail_overall = f"{Fore.RED, Style.BRIGHT}FAIL!{Style.RESET_ALL}"
+    passed = f"{Fore.GREEN}PASSED: {Fore.RESET}"
+    failed = f"{Fore.RED}FAILED: {Fore.RESET}"
+    passed_ratio = f"{Style.BRIGHT}PASSED RATIO: {Style.RESET_ALL}"
