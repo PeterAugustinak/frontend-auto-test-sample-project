@@ -14,7 +14,7 @@ from colorama import Fore
 class TestScenario:
 
     # data for spreadsheet reader
-    ts_file_name = 'ts_01_user_search'
+    ts_file_name = 'ts_fesp_01_user_search'
 
     # TEST SCENARIO DATA
     # general information of the Test Scenario
