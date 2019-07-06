@@ -2,7 +2,7 @@
 <p>This is just a sample of how can Automation Tests could be introduced for any frontend project.</p>
 
 <h2>Environment prerequisities</h2>
-- Firefox 67 or higher
+- Firefox 67 or higher<br/>
 - Chrome 75
 
 <h2>How to run tests</h2>
@@ -11,16 +11,16 @@ test suite run with predefined parameters). You don't need to have installed Pyt
 
 <p>Just run file <b>'test_runner.bat'</b></p>
 
-<p>Current predefined parameters are for test_suite_01_admin, DEv environment and FIREFOX browser.
+<p>Current predefined parameters are for test_suite_01_admin, DEVv environment and FIREFOX browser.
 You can change them by editing the file.</p> 
 
 <h2>Environment for the project</h2>
 There is Virtual Environment created for this project in /venv directory. It uses Python 3.7. 
 and folowing 3rd party libraries:
-- selenium
-- request
-- gspread
-- oath2client
+- selenium<br/>
+- request<br/>
+- gspread<br/>
+- oath2client<br/>
 - colorama
 
 Installation example:
