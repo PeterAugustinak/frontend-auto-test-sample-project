@@ -1,8 +1,8 @@
-<h2>FRONTEND-AUTO-TEST-SAMPLE-PROJECT</h2>
+<h2>FRONTEND-AUTO-TEST-SAMPLE-PROJECT (FESP)</h2>
 <p>This is just a sample of how can Automation Tests could be introduced for any frontend project.</p>
 
 <h2>Environment prerequisities</h2>
-- Firefox 67 or higher<br/>
+- Firefox 67 or higher or/and<br/>
 - Chrome 75
 
 <h2>How to run tests</h2>
