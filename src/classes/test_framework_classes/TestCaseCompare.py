@@ -18,7 +18,6 @@ class TestCaseCompare:
                 continue
             else:
                 if_passed = 0
-                # Tenv.failed_list.append(Tenv.current_element)
                 continue
 
         # empty global expected / actual data lists

@@ -1,5 +1,9 @@
 # This is the engine which handles data in web table
 
+# local library imports
+from classes.web_classes.ElementEngine import ElementEngine as Ee
+from locators.LocatorsUserManagement import LocatorsUserManagement as Lum
+from data.EnvironmentData import EnvironmentData as Env
 
 class WebTableElement:
     def __init__(self, web_table):
@@ -64,10 +68,19 @@ class WebTableElement:
             presence = True
         return presence
 
-    def get_cell_data(self, row_number, column_number):
+    def get_cell_data(self, column_number, row_number):
         if row_number == 0:
             raise Exception("Row number starts from 1")
 
-        # row_number = row_number + 1
-        cell_data = self.table.find_element_by_xpath(f"//tr[{row_number}]/td[{column_number}]").text
-        return cell_data
+        try:
+            print("trying cell position")
+            print(row_number)
+            print(column_number)
+            cell_elem = Env.driver.find_element_by_xpath(Lum.um_table | f"//tr[{row_number}]/td[{column_number}]")
+            cell_value = Ee.get_text_from_displayed_element(cell_elem)
+            print(cell_value)
+        except:
+            print("not have cell position")
+            cell_value = Ee.get_text_from_displayed_element(Lum.um_table_position_alt)
+
+        return cell_value

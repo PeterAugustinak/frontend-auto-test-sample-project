@@ -11,21 +11,22 @@ class LocatorsUserManagement:
     um_button_search = (By.XPATH, '//*[@id="searchBtn"]')
 
     # table locators
-    um_table = (By.XPATH, '//table[@id="resultTable"]')
+    # um_table = (By.XPATH, '//table[@id="resultTable"]')
+    um_table = '//table[@id="resultTable"]'
     um_table_by_id = (By.ID, 'resultTable')
     um_table_row = (By.TAG_NAME, "tr")
     um_table_col = (By.TAG_NAME, "td")
 
     @staticmethod
-    def um_table_position(table_col='Username', table_row=1):
+    def um_table_position(column_name='Username', row_number=1):
 
-        if table_col == 'checkbox': table_col = 1
-        if table_col == 'Username': table_col = 2
-        if table_col == 'User Role': table_col = 3
-        if table_col == 'Employee Name': table_col = 4
-        if table_col == 'Status': table_col = 5
+        if column_name == 'checkbox': column_number = 1
+        if column_name == 'Username': column_number = 2
+        if column_name == 'User Role': column_number = 3
+        if column_name == 'Employee Name': column_number = 4
+        if column_name == 'Status': column_number = 5
 
-        um_table_position = (By.XPATH, f'/html/body/div[1]/div[3]/div[2]/div/div/form/div[4]/table/tbody/tr[{table_row}]/td[{table_col}]')
+        um_table_position = (By.XPATH, f'/html/body/div[1]/div[3]/div[2]/div/div/form/div[4]/table/tbody/tr[{row_number}]/td[{column_number}]')
         return um_table_position
 
     um_table_position_alt = (By.XPATH, f'/html/body/div[1]/div[3]/div[2]/div/div/form/div[4]/table/tbody/tr/td')
