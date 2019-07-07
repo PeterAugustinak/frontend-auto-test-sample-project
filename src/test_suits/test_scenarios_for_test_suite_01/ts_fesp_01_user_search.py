@@ -1,4 +1,4 @@
-# this is Test Scenario ts_01_user_search
+# this is Test Scenario ts_fesp_admin_01_users
 
 # local library imports
 from data.TestFrameworkEnvironmentData import TestFrameworkEnvironmentData as Tenv
@@ -118,8 +118,7 @@ class TestScenario:
         test_cases_count = len(test_cases_result_list)
 
         '''
-        - test_case_runner method returns list of results of all test cases within given scenario and test scenario title
-        - it is powered by test_case_eval method
+        test_case_runner method returns list of results of all test cases within given scenario
         '''
 
         return [Te.test_scenario_eval(test_cases_result_list), test_cases_count]

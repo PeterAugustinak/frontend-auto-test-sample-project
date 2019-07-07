@@ -1,7 +1,7 @@
+# This is the engine for elements handling
+
 # standard library imports
 import time
-import datetime
-import inspect
 
 # 3rd party library imports
 from selenium.common.exceptions import TimeoutException, StaleElementReferenceException
@@ -19,8 +19,9 @@ class ElementEngine:
 
     @staticmethod
     def custom_click(locator, timeout=60):
-        """ Wait until webelement is not stale.
-        @param webelement: A selenium webdriver webelement
+        """ Wait until web element is not stale.
+        @param locator: path to element
+        @param timeout time in secs
         """
 
         element = ElementEngine.wait_until_element_displayed(locator)
@@ -35,7 +36,7 @@ class ElementEngine:
 
     @staticmethod
     def is_element_stale(webelement):
-        """ Checks if a webelement is stale.
+        """ Checks if a web element is stale.
         @param webelement: A selenium webdriver webelement
         """
         try:
@@ -44,7 +45,6 @@ class ElementEngine:
             return True
         except:
             pass
-
         return False
 
     @staticmethod
@@ -120,4 +120,3 @@ class ElementEngine:
         action = ActionChains(driver)
         element = action.move_to_element(locator).perform()
         return element
-

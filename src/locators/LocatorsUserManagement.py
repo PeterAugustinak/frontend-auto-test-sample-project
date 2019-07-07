@@ -21,12 +21,15 @@ class LocatorsUserManagement:
     def um_table_position(column_name='Username', row_number=1):
 
         if column_name == 'checkbox': column_number = 1
-        if column_name == 'Username': column_number = 2
-        if column_name == 'User Role': column_number = 3
-        if column_name == 'Employee Name': column_number = 4
-        if column_name == 'Status': column_number = 5
+        elif column_name == 'Username': column_number = 2
+        elif column_name == 'User Role': column_number = 3
+        elif column_name == 'Employee Name': column_number = 4
+        elif column_name == 'Status': column_number = 5
+        else:
+            column_number = 0
 
-        um_table_position = (By.XPATH, f'/html/body/div[1]/div[3]/div[2]/div/div/form/div[4]/table/tbody/tr[{row_number}]/td[{column_number}]')
+        um_table_position = (By.XPATH, f'/html/body/div[1]/div[3]/div[2]/div/div/form/div[4]/table/tbody/tr['
+                             f'{row_number}]/td[{column_number}]')
         return um_table_position
 
     um_table_position_alt = (By.XPATH, f'/html/body/div[1]/div[3]/div[2]/div/div/form/div[4]/table/tbody/tr/td')

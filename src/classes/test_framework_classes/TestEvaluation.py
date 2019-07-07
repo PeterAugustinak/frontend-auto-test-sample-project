@@ -1,4 +1,4 @@
-# these are methods for evaluation of particular test stage - test case, test scenario, test suite
+# These are methods for evaluation of particular test stage - test case, test scenario, test suite
 
 # local library imports
 from data.TestFrameworkEnvironmentData import TestFrameworkEnvironmentData as Tenv
@@ -49,14 +49,14 @@ class TestEvaluation:
         f"{Fore.RESET}"
         if len(final_eval_list) == len(test_cases_result_list):
             print(Tenv.ok)
-            print("-------------------------------------------------------------")
+            print("----------------------------------------------")
             return 1
 
         else:
             print(Tenv.fail)
             print(f" Failed Test Cases: {len(fail_result_list)}")
             f"{Fore.RESET}"
-            print("-------------------------------------------------------------")
+            print("----------------------------------------------")
             return 0
 
     # evaluation of particular Test Suite
@@ -101,16 +101,12 @@ class TestEvaluation:
         else:
             passed_ratio = round((100 / Tenv.overall_tc) * tot_pass_test_cases, 2)
 
-        print(f"PASSED RATIO: {passed_ratio}%")
-        if Tenv.overall_result == "PASS":
+        print(f"PASSED TC's RATIO: {passed_ratio}%")
+        if Tenv.overall_result == "PASS!":
             print(f"{Fore.GREEN}")
             print(f"OVERALL RESULT: {Tenv.overall_result}")
             print(Fore.RESET)
-            print()
-
         else:
             print(f"{Fore.RED}")
             print(f"OVERALL RESULT: {Tenv.overall_result}")
             print(Fore.RESET)
-            print()
-

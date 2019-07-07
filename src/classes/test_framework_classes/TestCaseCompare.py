@@ -1,4 +1,4 @@
-# This compares data from particular trest cases
+# This compares expected and actual data from particular test cases
 
 # local library imports
 from data.TestFrameworkEnvironmentData import TestFrameworkEnvironmentData as Tenv

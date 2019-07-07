@@ -6,7 +6,6 @@ import time
 # local library imports
 from locators.LocatorsGeneral import LocatorsGeneral as Lg
 from locators.LocatorsUserManagement import LocatorsUserManagement as Lum
-
 from classes.web_classes.ElementEngine import ElementEngine as Ee
 
 

@@ -1,4 +1,4 @@
-# this is universal TestSuiteRunner for 'FRONTEND AUTO TEST SAMPLE PROJECT'
+# This is universal Test Suite Runner for 'FESP' project
 
 # standard library imports
 from datetime import datetime
@@ -12,10 +12,11 @@ from classes.test_framework_classes.TestSuiteInitialSetup import TestSuiteInitia
 
 # 3rd party library imports
 from colorama import Fore, init
+# initialization of colorama plugin
 init()
 
-# test suite imports
-if Env.test_suite == 'test_suite_01_admin':
+# TEST SUITE IMPORTS
+if Env.test_suite == 'test_suite_fesp_01_admin':
     from test_suits.test_suite_fesp_01_admin import TestSuite as Ts
 else:
     Tenv.test_suite_exist = 0

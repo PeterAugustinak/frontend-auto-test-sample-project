@@ -1,4 +1,4 @@
-# This is the engine for manipulating Test Scenario spread sheets
+# This is the engine for manipulating data of Test Scenario spread sheets
 
 # standard library imports
 import os

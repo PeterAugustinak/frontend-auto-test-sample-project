@@ -13,12 +13,16 @@ class TestSuiteInitialSetup:
 
     @classmethod
     def test_suite_initial_setup(cls, test_suite):
+        """
+        this method starts common processes (like open/close browser) + processes based on testes test suite (navigation
+        to menu etc.
+        """
 
         # open browser (same for every test suite)
         Be.open_url(Env.app_url)
 
         # based on particular test suite, initialize web navigation specific for this test suite
-        if test_suite.test_suite_name == 'TEST SUITE 01 ADMIN':
+        if test_suite.test_suite_name == 'TEST SUITE FESP 01 ADMIN':
             from classes.web_classes.AppAdminUserManagement import AdminUserManagement as Aum
 
             # login into APP

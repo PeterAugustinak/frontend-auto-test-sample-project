@@ -1,4 +1,4 @@
-# This the counter for particular Test Scenarios
+# This the counter of results for particular Test Scenarios
 
 # local library imports
 from data.TestFrameworkEnvironmentData import TestFrameworkEnvironmentData as Env

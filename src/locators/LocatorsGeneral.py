@@ -1,3 +1,5 @@
+# This is the list of general app locators
+
 # 3rd party library imports
 from selenium.webdriver.common.by import By
 

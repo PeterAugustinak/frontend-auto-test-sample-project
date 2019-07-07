@@ -27,6 +27,7 @@ class AppLogin:
         time.sleep(2)
 
         # wait until menu panel is displayed
+        # TODO: fix this verification
         # Ee.wait_until_element_displayed(Agl.menu_admin)
 
     @staticmethod
@@ -37,15 +38,3 @@ class AppLogin:
 
         # wait until Login button on login page is displayed
         Ee.wait_until_element_displayed(Agl.login_button)
-
-
-# BrowserEngine.open_url(Env.app_url)
-# time.sleep(2)
-# AppLogin.login(Env.app_username, Env.app_password)
-# time.sleep(2)
-# AppLogin.logout()
-# time.sleep(2)
-# BrowserEngine.close_browser()
-
-
-

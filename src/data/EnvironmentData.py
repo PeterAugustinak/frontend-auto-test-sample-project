@@ -1,3 +1,5 @@
+# This is the setup for global environment elements and data
+
 # standard library imports
 import os
 import sys
@@ -45,5 +47,3 @@ class EnvironmentData:
         app_password = config_parser.get('stag', 'app-password')
     else:
         print("Wrong environment value ...")
-
-

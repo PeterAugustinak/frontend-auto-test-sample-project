@@ -1,4 +1,4 @@
-# This is Browser Engine - opens browser, specific url, closes browser
+# This is the Browser Engine for operating with browsers and urls
 
 # local library imports
 from data.EnvironmentData import EnvironmentData as Env

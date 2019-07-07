@@ -1,4 +1,4 @@
-# This is service availability check for FRONTEND AUTO TEST SAMPLE PROJECT project
+# This is service availability check for FESP project
 
 # 3rd party library imports
 import requests
@@ -37,7 +37,7 @@ class TestServicesAvailability:
             return True
         else:
             print()
-            print("Some services requiered for VISMA-FRONTEND-TEST testing are unavailable.")
+            print("Some services requiered for FESP testing are unavailable.")
             print("Check above services and restart the tests.")
             print(f"{Fore.RED}AUTOMATION TESTING FOR {Env.environment} ENV ABORTED (NOT FAIL!){Fore.RESET}")
             return False
