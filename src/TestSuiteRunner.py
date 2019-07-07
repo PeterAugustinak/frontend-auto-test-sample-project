@@ -59,7 +59,7 @@ class TestSuiteRunner:
             print(f"Environment: {Env.environment}")
             print(f"Test Suite: {Ts.test_suite_name}")
             print(f"All below Test Scenarios with all details can be find here:")
-            print(f'{Fore.BLUE}{Ts.test_suite_catalogue}{Fore.RESET}')
+            print(f'{Fore.BLUE}{Ts.test_scenario_list_doc}{Fore.RESET}')
             print("*************************************************************")
             print()
 

@@ -13,6 +13,9 @@ from locators.LocatorsUserManagement import LocatorsUserManagement as Lum
 # 3rd party library imports
 from colorama import Fore
 
+# standard ;ibrary imports
+from  itertools import chain
+
 
 class TestScenario:
 
@@ -50,13 +53,13 @@ class TestScenario:
         ],
 
         # check - if user/data is present in the table by default
-        # 03
+        # 02
         [
-            'check',
+            'check_all',
             Ssr.read_ts_info(ts_file_name, 13, 6),
             Ssr.read_ts_data(ts_file_name, 3),
             Ssr.read_ts_data(ts_file_name, 4),
-            []
+            [0, 0]  # not using in this case
         ],
 
         # search - test cases for searching values by filter
@@ -126,18 +129,36 @@ class TestScenario:
 
         Tenv.expected_data_list = expected_data_list
         # table
-        # table = Wte(Env.driver.find_element_by_xpath(Lum.um_table))
+        table = Wte(Env.driver.find_element_by_xpath(Lum.um_table))
+
         column_name = table_position[0]
         row_number = table_position[1]
 
-        # search users by Username
         for data in input_data_list:
+
             # check type of test and based on that decide what operation will be executed
+            # tc 01
+            if type_of_test == 'check':
+                # check values in table
+                current_data = Aum.check_table_position(column_name, row_number)
+                Tenv.actual_data_list.append(current_data)
+
+            # tc 02
+            if type_of_test == 'check_all':
+                # list of all datas in the table
+                all_data_lst = table.get_all_data()
+                # find if input data is present in the table by iterating through list of lists
+                if data in chain(*all_data_lst):
+                        Tenv.actual_data_list.append(data)
+                else:
+                    Tenv.actual_data_list.append("Element not in the table")
+
+            # tc 03
             if type_of_test == 'search':
                 # execute search by Username filter
                 Aum.search_by_username(data)
-            # check values in table
-            current_data = Aum.check_table_position(column_name, row_number)
-            Tenv.actual_data_list.append(current_data)
+                # check values in table
+                current_data = Aum.check_table_position(column_name, row_number)
+                Tenv.actual_data_list.append(current_data)
 
         return Tc.compare_test_case_result(Tenv.expected_data_list, Tenv.actual_data_list)

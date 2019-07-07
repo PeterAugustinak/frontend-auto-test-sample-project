@@ -104,9 +104,13 @@ class TestEvaluation:
         print(f"PASSED RATIO: {passed_ratio}%")
         if Tenv.overall_result == "PASS":
             print(f"{Fore.GREEN}")
+            print(f"OVERALL RESULT: {Tenv.overall_result}")
+            print(Fore.RESET)
+            print()
+
         else:
             print(f"{Fore.RED}")
-        print(f"OVERALL RESULT: {Tenv.overall_result}")
-        print(Fore.RESET)
-        print()
+            print(f"OVERALL RESULT: {Tenv.overall_result}")
+            print(Fore.RESET)
+            print()
 

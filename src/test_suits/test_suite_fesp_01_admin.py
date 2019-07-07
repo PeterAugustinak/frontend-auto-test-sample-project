@@ -7,7 +7,7 @@ from test_suits.test_scenarios_for_test_suite_01.ts_fesp_01_user_search import T
 class TestSuite:
 
     test_suite_name = 'TEST SUITE 01 ADMIN'
-    test_suite_catalogue = 'http://www.testsuitecatalogue.com'
+    test_scenario_list_doc = 'https://bit.ly/2L6fnqK'
 
     """
     list of test scenarios to be tested in format:
@@ -16,7 +16,7 @@ class TestSuite:
 
     test_scenario_list = [
         [ts_01_user_search, ["DEV", ]],
-        # [TS_02_user_adding_deleting, ["DEV", "STAG"]],
+        # [TS_02_job_titles, ["DEV", "STAG"]],
         # ...
     ]
 

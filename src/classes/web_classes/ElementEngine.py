@@ -64,7 +64,7 @@ class ElementEngine:
             raise
 
     @staticmethod
-    def wait_until_element_displayed_special(locator, locator_alt, timeout=2):
+    def wait_until_element_displayed_special(locator, locator_alt, timeout=1):
         try:
             element = WebDriverWait(driver, timeout).until(expected_conditions.visibility_of_element_located(locator))
             return element
