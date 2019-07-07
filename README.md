@@ -19,8 +19,8 @@ For run this project just follow these two steps:
 <p>Current predefined parameters are for test_suite_fesp_01_admin, DEV environment and CHROME browser.
 You can change them by editing the file.</p> 
 
-<h2>Environment for the project</h2>
-If above settings will not work, you have to do following steps to set environment for the project.
+<h2>Setup environment and run the project manually</h2>
+If above settings will not work, you have to do following steps to set environment for the project.<br/>
 - install Python 3.7.2. (https://www.python.org/downloads/release/python-372/)
  
 Install folowing 3rd party libraries:
