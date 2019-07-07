@@ -2,7 +2,7 @@
 <p>This is just a sample of how can Automation Tests could be introduced for any frontend project.</p>
 
 <h2>Environment prerequisities</h2>
-- Python 3.7.2. (https://www.python.org/downloads/release/python-372/)
+- Python 3.7.2. (https://www.python.org/downloads/release/python-372/)<br/>
 - Firefox 67 or higher or/and<br/>
 - Chrome 75
 
