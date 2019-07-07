@@ -14,6 +14,7 @@ class LocatorsUserManagement:
     @staticmethod
     def um_table_position_xpath(table_col='Username', table_row=1):
 
+        if table_col == 'checkbox': table_col = 1
         if table_col == 'Username': table_col = 2
         if table_col == 'User Role': table_col = 3
         if table_col == 'Employee Name': table_col = 4

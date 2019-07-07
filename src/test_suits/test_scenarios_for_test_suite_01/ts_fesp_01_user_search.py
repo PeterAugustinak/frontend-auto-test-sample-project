@@ -14,7 +14,7 @@ from colorama import Fore
 class TestScenario:
 
     # data for spreadsheet reader
-    ts_file_name = 'ts_fesp_01_user_search'
+    ts_file_name = 'ts_fesp_admin_01_users'
 
     # TEST SCENARIO DATA
     # general information of the Test Scenario
@@ -27,18 +27,34 @@ class TestScenario:
     TEST CASE EXPLANATION:
     Every particular test case is list, consists from:
          [
-            description of the test case,
-            [list of INPUT VALUES],
-            [list of EXPECTED VALUES],
+            type of test ('check', 'search', 'add' ...)
+            description of the test case, read from scenario worksheet, col/row nr
+            list of INPUT VALUES, - read from data worksheet, column nr
+            list of EXPECTED VALUES - read from data worksheet, column nr,
+            specific data for test case - in this scenario list of values of col/row to be checked
          ],
     '''
 
     test_cases_list = [
+        # check - basic test cases for default values in the table
         # 01
         [
-            f'{Ssr.read_ts_info(ts_file_name, 13, 7)}: ',
+            'check',
+            Ssr.read_ts_info(ts_file_name, 13, 5),
+            Ssr.read_ts_data(ts_file_name, 1),
+            Ssr.read_ts_data(ts_file_name, 2),
+            ['checkbox', 1]
+        ],
+
+        # search - test cases for searching values by filter
+        # by Username
+        # 03
+        [
+            'search',
+            Ssr.read_ts_info(ts_file_name, 23, 5),
             Ssr.read_ts_data(ts_file_name, 5),
-            Ssr.read_ts_data(ts_file_name, 6)
+            Ssr.read_ts_data(ts_file_name, 6),
+            ['Employee Name', 1]
         ],
 
     ]
@@ -62,15 +78,17 @@ class TestScenario:
 
             # just small hack for better displaying test cases numbering (adding 0 for tc`s lower than 10)
             if test_case_number < 10:
-                test_case_number_prnt = f"0{test_case_number}"
+                test_case_number_print = f"0{test_case_number}"
             else:
-                test_case_number_prnt = f"{test_case_number}"
+                test_case_number_print = f"{test_case_number}"
 
-            # test_case[0]: description
-            # test_case[1]: input_data_list
-            # test_case[2]: expected_data_list
-            result_test_case = [cls.test_case_execution(test_case[1], test_case[2]),
-                                f"Test Case {test_case_number_prnt}: {test_case[0]}"]
+            # test_case[0]: type of test
+            # test_case[1]: description
+            # test_case[2]: input_data_list
+            # test_case[3]: expected_data_list
+            # test_case[4]: table_position
+            result_test_case = [cls.test_case_execution(test_case[0], test_case[2], test_case[3], test_case[4]),
+                                f"Test Case {test_case_number_print}: {test_case[1]}: "]
 
             # this calls method for evaluation of tested test case (for print evaluations only)
             Te.test_case_eval(result_test_case)
@@ -91,15 +109,18 @@ class TestScenario:
         return [Te.test_scenario_eval(test_cases_result_list), test_cases_count]
 
     @staticmethod
-    def test_case_execution(input_data_list, expected_data_list):
+    def test_case_execution(type_of_test, input_data_list, expected_data_list, table_position):
 
         Tenv.expected_data_list = expected_data_list
 
         # search users by Username
-        for user in input_data_list:
-            # check value in result table
-            Aum.search_by_username(user)
-            current_data = Aum.check_table('Employee Name', 1)
+        for data in input_data_list:
+            # check type of test and based on that decide what operation will be executed
+            if type_of_test == 'search':
+                # execute search by Username filter
+                Aum.search_by_username(data)
+            # check values in table
+            current_data = Aum.check_table(table_position[0], table_position[1])
             Tenv.actual_data_list.append(current_data)
 
         return Tc.compare_test_case_result(Tenv.expected_data_list, Tenv.actual_data_list)
