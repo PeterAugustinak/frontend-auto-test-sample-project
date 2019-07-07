@@ -9,7 +9,8 @@
 <p>All the necessary settings are done within the batch script (windows cmd settings, virtual environment activation,
 test suite run with predefined parameters). You don't need to have installed Python in you machine.</p>
 
-<p>Just run file <b>'test_runner.bat'</b></p>
+- add provided <b>fesp.json</b> to root directory (frontend-auto-test-sample-project/)
+- run file <b>'test_runner.bat'</b>
 
 <p>Current predefined parameters are for test_suite_01_admin, DEVv environment and FIREFOX browser.
 You can change them by editing the file.</p> 
@@ -40,8 +41,8 @@ Possible values:
 - [ENV] = "DEV", "STAG"
 - [BROWSER] = "FIREFOX", "CHROME"
 
-Examples:
-- python -u src/TestSuiteRunner.py test_suite_01_admin DEV CHROME
+Examples: (only possibility is test_suite_fesp_01_admin & DEV & FIREFOX or CHROME)
+- python -u src/TestSuiteRunner.py test_suite_fesp_01_admin DEV CHROME
 
 <h2>Owner / Contact Person</h2>
 peter.augustinak@gmail.com

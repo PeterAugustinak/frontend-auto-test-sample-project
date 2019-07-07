@@ -11,12 +11,12 @@ from classes.test_framework_classes.TestServiceAvailability import TestServicesA
 from classes.test_framework_classes.TestSuiteInitialSetup import TestSuiteInitialSetup as Tsis
 
 # 3rd party library imports
-from colorama import Fore, Style, init
+from colorama import Fore, init
 init()
 
 # test suite imports
 if Env.test_suite == 'test_suite_01_admin':
-    from test_suits.test_suite_01_admin import TestSuite as Ts
+    from test_suits.test_suite_fesp_01_admin import TestSuite as Ts
 else:
     Tenv.test_suite_exist = 0
 
@@ -35,7 +35,7 @@ class TestSuiteRunner:
         In case of some service is unavailable, test running are cancelled.
         """
 
-        print(f"{Style.BRIGHT}SERVICES CHECK FOR {Env.environment} ENVIRONMENT STARTS:{Style.RESET_ALL}")
+        print(f"{Fore.YELLOW}SERVICES CHECK FOR {Env.environment} ENVIRONMENT STARTS:{Fore.RESET}")
         service_check = TestService.test_service_runner()
         print("*************************************************************")
         print()
@@ -53,8 +53,9 @@ class TestSuiteRunner:
         """
 
         if Tenv.test_suite_exist:  # test suite was correctly imported
-            # introductory screen   
-            print(f"{Style.BRIGHT}TESTING FOR {Env.project_name} HAS BEEN STARTED AT {datetime.now().strftime('%d-%m-%Y, %H:%M:%S')}!{Style.RESET_ALL}")
+            # introductory screen
+            print(f"{Fore.YELLOW}TESTING FOR {Env.project_name} PROJECT HAS BEEN STARTED AT"
+                  f" {datetime.now().strftime('%d-%m-%Y, %H:%M:%S')}!{Fore.RESET}")
             print(f"Environment: {Env.environment}")
             print(f"Test Suite: {Ts.test_suite_name}")
             print(f"All below Test Scenarios with all details can be find here:")
@@ -66,11 +67,11 @@ class TestSuiteRunner:
             Tsis.test_suite_initial_setup(Ts)
 
             # closing screen
-            print(f"TESTING FOR {Env.project_name} - {Ts.test_suite_name} ON {Env.environment} FINISHED AT "
+            print(f"TESTING FOR {Env.project_name}/{Ts.test_suite_name} ON {Env.environment} FINISHED AT "
                   f"{datetime.now().strftime('%d-%m-%Y, %H:%M:%S')}")
             print()
         else:  # test suite was not found and not imported
-            print("Test Suite not found. Automation Testing Aborted.")
+            print(f"{Fore.RED}Test Suite not found. Automation Testing Aborted.{Fore.RESET}")
             from classes.web_classes.BrowserEngine import BrowserEngine as Be
             Be.close_browser()
 

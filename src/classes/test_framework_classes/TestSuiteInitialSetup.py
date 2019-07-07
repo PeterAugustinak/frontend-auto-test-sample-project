@@ -18,7 +18,7 @@ class TestSuiteInitialSetup:
         Be.open_url(Env.app_url)
 
         # based on particular test suite, initialize web navigation specific for this test suite
-        if test_suite.test_suite_name == 'TEST SUITE 01 APP ADMIN':
+        if test_suite.test_suite_name == 'TEST SUITE 01 ADMIN':
             from classes.web_classes.AppAdminUserManagement import AdminUserManagement as Aum
 
             # login into APP

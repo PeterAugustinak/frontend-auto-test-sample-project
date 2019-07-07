@@ -49,14 +49,14 @@ class TestEvaluation:
         f"{Fore.RESET}"
         if len(final_eval_list) == len(test_cases_result_list):
             print(Tenv.ok)
-            print("------------------------------------------------------------")
+            print("-------------------------------------------------------------")
             return 1
 
         else:
             print(Tenv.fail)
             print(f" Failed Test Cases: {len(fail_result_list)}")
             f"{Fore.RESET}"
-            print("------------------------------------------------------------")
+            print("-------------------------------------------------------------")
             return 0
 
     # evaluation of particular Test Suite
