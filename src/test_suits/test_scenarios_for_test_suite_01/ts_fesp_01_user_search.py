@@ -120,7 +120,7 @@ class TestScenario:
                 # execute search by Username filter
                 Aum.search_by_username(data)
             # check values in table
-            current_data = Aum.check_table(table_position[0], table_position[1])
+            current_data = Aum.check_table_position(table_position[0], table_position[1])
             Tenv.actual_data_list.append(current_data)
 
         return Tc.compare_test_case_result(Tenv.expected_data_list, Tenv.actual_data_list)

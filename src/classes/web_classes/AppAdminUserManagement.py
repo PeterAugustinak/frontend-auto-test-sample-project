@@ -48,10 +48,11 @@ class AdminUserManagement:
         Ee.custom_click(Lum.um_button_search)
 
     @staticmethod
-    def check_table(table_col, table_row):
+    def check_table_position(table_col, table_row):
+        # looking for exact position in table based on col and row
+        um_table_position = Lum.um_table_position(table_col, table_row)
+        # alternative link to table value in case there is no position based on col and row
+        um_table_position_alt = Lum.um_table_position_alt
 
-        um_table = Lum.um_table_position_xpath(table_col, table_row)
-        um_table_alt = Lum.um_table_alt
-
-        value = Ee.get_text_from_displayed_element_special(um_table, um_table_alt)
+        value = Ee.get_text_from_displayed_element_special(um_table_position, um_table_position_alt)
         return value
