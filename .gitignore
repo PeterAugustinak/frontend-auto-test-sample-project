@@ -1,2 +1,4 @@
+/venv-fesp
+/.idea
 
-frontend-auto-secret.json
+fesp.json

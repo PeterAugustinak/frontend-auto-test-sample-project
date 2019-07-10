@@ -14,6 +14,8 @@ config_file_path = os.path.join(os.path.dirname(__file__), "..", "data", "config
 config_parser.read_file(open(config_file_path))
 
 driver = None
+geckodriver_path = os.path.join(os.path.dirname(__file__), "..", "drivers", "geckodriver.exe")
+chromedriver_path = os.path.join(os.path.dirname(__file__), "..", "drivers", "chromedriver.exe")
 
 
 class EnvironmentData:
@@ -28,9 +30,9 @@ class EnvironmentData:
 
     # WEB DRIVER
     if web_driver == 'FIREFOX':
-        driver = webdriver.Firefox()
+        driver = webdriver.Firefox(executable_path=geckodriver_path)
     elif web_driver == 'CHROME':
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(executable_path=chromedriver_path)
     else:
         raise NameError('Wrong driver value.')
 
