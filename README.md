@@ -21,7 +21,7 @@
 - _(in case of anything goes wrong with testrunner.bat)_<br/>
 - create virtual environment for the project in (root) directory by **py -m venv venv-fesp**<br/>
 - activate created virtual environment by run **activate.bat** in venv-fesp\Scripts <br/>
-- install external libraries - back to root directory and **pip install -r requeirements.txt**<br/>
+- install external libraries - back to root directory and **pip install -r requirements.txt**<br/>
 - run tests by run TestSuiteRunner.py - see below <b>"How to run tests"</b><br/>
 <br/>
 
